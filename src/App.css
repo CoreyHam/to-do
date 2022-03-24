@@ -1,0 +1,16 @@
+
+#root{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-list{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo{
+  display: flex;
+}
