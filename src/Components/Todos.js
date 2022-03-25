@@ -1,22 +1,34 @@
 import React from 'react'
 
-function Todos({todoState, setTodoState}){
+function Todos({ todoState, setTodoState }) {
   console.log("todoState", todoState)
-  function handleClick(id){
+  function handleClick(id, type) {
     console.log(todoState)
-    setTodoState((todos) => {
-      console.log(id)
-      let targetIndex = todos.findIndex(todo => todo.id == id)
-      console.log(targetIndex)
-      todos[targetIndex].status = 'todo clicked'
-      return[...todos]
-    })
+    let copy = [...todoState]
+
+    let targetIndex = copy.findIndex(todo => todo.id == id)
+    console.log("the id", id)
+    console.log("the id", copy[targetIndex])
+    if (type === 'delete') {
+      copy[targetIndex].status = 'deleted'
+    }
+    if (type === 'toggle') {
+      if (copy[targetIndex].status === 'active') {
+        copy[targetIndex].status = 'toggled'
+      } else {
+        console.log("hello")
+        copy[targetIndex].status = 'active'
+      }
+    }
+    setTodoState(copy)
   }
   return (
-    todoState.map((todo, i)=>{
-      return(
-        <div key={todo.id} className={todo.status}>
-          <button onClick={()=> handleClick(todo.id)}></button><div>{todo.text}</div><button></button>
+    todoState.map((todo, i) => {
+      return (
+        <div key={todo.id} className={`todo ${todo.status}`}>
+          <button onClick={() => handleClick(todo.id, 'toggle')}></button>
+          <div>{todo.text}</div>
+          <button onClick={() => handleClick(todo.id, 'delete')}></button>
         </div>
       )
     })

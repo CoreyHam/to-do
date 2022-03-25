@@ -14,3 +14,14 @@
 .todo{
   display: flex;
 }
+
+.active{
+  color: green;
+}
+.toggled{
+  color: orange;
+}
+.deleted{
+  color: red;
+  display: none;
+}
