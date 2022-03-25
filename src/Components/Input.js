@@ -13,7 +13,7 @@ function Input({ todoState, setTodoState }) {
                 if (value !== '') {
                     setTodoState((todos) => {
                         let unique = Date.now()
-                        todos.push({ text: value, id: unique, status: 'todo active' })
+                        todos.push({ text: value, id: unique, status: 'active' })
                         return [...todos]
                     })
                     setValue('')
