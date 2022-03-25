@@ -1,14 +1,11 @@
 import React from 'react'
-
+import { Circle, XCircle } from 'react-bootstrap-icons'
 function Todos({ todoState, setTodoState }) {
-  console.log("todoState", todoState)
+  // console.log("todoState", todoState)
   function handleClick(id, type) {
-    console.log(todoState)
     let copy = [...todoState]
 
     let targetIndex = copy.findIndex(todo => todo.id == id)
-    console.log("the id", id)
-    console.log("the id", copy[targetIndex])
     if (type === 'delete') {
       copy[targetIndex].status = 'deleted'
     }
@@ -16,7 +13,6 @@ function Todos({ todoState, setTodoState }) {
       if (copy[targetIndex].status === 'active') {
         copy[targetIndex].status = 'toggled'
       } else {
-        console.log("hello")
         copy[targetIndex].status = 'active'
       }
     }
@@ -26,9 +22,9 @@ function Todos({ todoState, setTodoState }) {
     todoState.map((todo, i) => {
       return (
         <div key={todo.id} className={`todo ${todo.status}`}>
-          <button onClick={() => handleClick(todo.id, 'toggle')}></button>
+          <a onClick={() => handleClick(todo.id, 'toggle')}><Circle /></a>
           <div>{todo.text}</div>
-          <button onClick={() => handleClick(todo.id, 'delete')}></button>
+          <a className='unstyle' onClick={() => handleClick(todo.id, 'delete')}><XCircle /></a>
         </div>
       )
     })

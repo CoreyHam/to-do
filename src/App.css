@@ -1,27 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200&display=swap');
 
+html{
+  background-color: #403b49;
+}
 #root{
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+.title{
+  color: white;
+  font-size: 150px;
+  font-family: 'Montserrat', sans-serif;
+  animation: forwards .1s fade-in;
+}
 
+.input{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  width: 30vw;
+  height: 30px;
+  margin: 30px;
+  opacity: 0;
+  animation: forwards .1s fade-in;
+  animation-delay: .1s;
+}
 .todo-list{
+  width: 30vw;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 20px;
+  opacity: 0;
+  animation: forwards .1s fade-in;
+  animation-delay: .1s;
 }
 
 .todo{
+  font-family: 'Montserrat', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  padding: 5px;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: inherit;
+  min-height: 30px;
+  display: flex;
+  overflow-wrap: anywhere;
 }
 
 .active{
-  color: green;
+  background-color: white;
+  color: #040404;
 }
+
 .toggled{
-  color: orange;
+  opacity: .25;
+  background-color: white;
+  text-decoration: line-through;
+  color: rgba(0, 0, 0, 0.274);
 }
 .deleted{
-  color: red;
   display: none;
+}
+
+.unstyle{
+  border: none;
+  background-color: none;
+}
+
+a:hover{
+  cursor: pointer;
+}
+
+.bottom-items{
+  color: white;
+  display: flex;
+  gap: 15px;
+}
+
+@keyframes fade-in {
+  from{
+    opacity: 0;
+  }  
+  to{
+    opacity: 1;
+  }
 }

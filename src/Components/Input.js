@@ -1,6 +1,6 @@
 import { React, useEffect, useState } from 'react'
 
-function Input({ todoState, setTodoState }) {
+function Input({ setRenderedTodos, todoState, setTodoState }) {
     const [value, setValue] = useState('');
 
     useEffect(() => {
@@ -8,7 +8,7 @@ function Input({ todoState, setTodoState }) {
     }, [value]);
 
     return (
-        <input type='text' value={value} onChange={(e) => setValue(e.target.value)} onKeyUp={(e) => {
+        <input className='input' type='text' value={value} onChange={(e) => setValue(e.target.value)} onKeyUp={(e) => {
             if (e.key === 'Enter') {
                 if (value !== '') {
                     setTodoState((todos) => {
@@ -16,9 +16,10 @@ function Input({ todoState, setTodoState }) {
                         todos.push({ text: value, id: unique, status: 'active' })
                         return [...todos]
                     })
+                    setRenderedTodos(todoState)
                     setValue('')
+                } 
                 }
-            }
         }} ></input>
     )
 }
