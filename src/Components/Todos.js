@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Circle, XCircle } from 'react-bootstrap-icons'
 function Todos({ todoState, setTodoState }) {
   console.log("todoState", todoState)
   function handleClick(id, type) {
@@ -26,9 +26,9 @@ function Todos({ todoState, setTodoState }) {
     todoState.map((todo, i) => {
       return (
         <div key={todo.id} className={`todo ${todo.status}`}>
-          <button onClick={() => handleClick(todo.id, 'toggle')}></button>
+          <a onClick={() => handleClick(todo.id, 'toggle')}><Circle /></a>
           <div>{todo.text}</div>
-          <button onClick={() => handleClick(todo.id, 'delete')}></button>
+          <a className='unstyle' onClick={() => handleClick(todo.id, 'delete')}><XCircle /></a>
         </div>
       )
     })

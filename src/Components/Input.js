@@ -8,7 +8,7 @@ function Input({ todoState, setTodoState }) {
     }, [value]);
 
     return (
-        <input type='text' value={value} onChange={(e) => setValue(e.target.value)} onKeyUp={(e) => {
+        <input className='input' type='text' value={value} onChange={(e) => setValue(e.target.value)} onKeyUp={(e) => {
             if (e.key === 'Enter') {
                 if (value !== '') {
                     setTodoState((todos) => {
